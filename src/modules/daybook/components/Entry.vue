@@ -11,16 +11,30 @@
     </div>
 
     <div class="entry-description">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae quaerat
+      <!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae quaerat
       mollitia amet ullam sunt soluta optio qui commodi quisquam. Ducimus
       cupiditate totam atque nostrum odit, maxime distinctio velit quae
-      voluptatibus.
+      voluptatibus. -->
+      {{ lorem }}
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    text: {
+      type    : String,
+      default : 'N/A',
+      required: true,
+    }
+  },
+  data() {
+    return {
+      lorem: this.text
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
