@@ -10,7 +10,11 @@
     </div>
 
     <div class="entry-scrollarea">
-      <Entry v-for="item in entriesByTerm" :key="item" :text="item.text" />
+      <Entry
+        v-for="entry in entriesByTerm"
+        :key="entry.id"
+        :entry="entry"
+      />
     </div>
   </div>
 </template>
@@ -40,11 +44,11 @@ export default {
 <style lang="scss" scoped>
 .entry-list-container {
   border-right: 1px solid #2c3e50;
-  height      : calc(100vh - 100px);
+  height: calc(100vh - 100px);
 }
 .entry-scrollarea {
-  height    : calc(100vh - 120px);
-  overflow  : scroll;
+  height: calc(100vh - 120px);
+  overflow: scroll;
   overflow-x: hidden;
 }
 </style>
