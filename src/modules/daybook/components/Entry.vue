@@ -17,34 +17,12 @@
 </template>
 
 <script>
-const months = [
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
-];
-const days = [
-  "Domingo",
-  "Lunes",
-  "Martes",
-  "Miércoles",
-  "Jueves",
-  "Viernes",
-  "Sábado",
-];
+import { day, month, yearDay } from "../helpers/getDayMonthYear";
 
 export default {
   props: {
     entry: {
-      type    : Object,
+      type: Object,
       required: true,
     },
   },
@@ -60,13 +38,13 @@ export default {
         : this.entry.text;
     },
     day() {
-      return this.date.getDay();
+      return day;
     },
     month() {
-      return months[this.date.getMonth()];
+      return month;
     },
     year() {
-      return `${this.date.getFullYear()}, ${days[this.date.getDay()]}`;
+      return yearDay;
     },
   },
 };
@@ -75,11 +53,11 @@ export default {
 <style lang="scss" scoped>
 .entry-container {
   border-bottom: 1px solid #2c3e50;
-  transition   : 0.2s all ease-in;
+  transition: 0.2s all ease-in;
 
   &:hover {
     background-color: lighten($color: grey, $amount: 45);
-    transition      : 0.2s all ease-in;
+    transition: 0.2s all ease-in;
   }
 
   .entry-title {

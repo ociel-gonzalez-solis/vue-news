@@ -27,6 +27,7 @@
       cols="30"
       rows="10"
       placeholder="Que sucedio hoy?"
+      v-model="entry.text"
     ></textarea>
   </div>
 
@@ -53,13 +54,20 @@ export default {
   components: {
     Fab: defineAsyncComponent(() => import("../components/Fab.vue")),
   },
+  data() {
+    return {
+      entry: null
+    }
+  },
   computed: {
     ...mapGetters("journal", ["getEntryById"]),
   },
   methods: {
     loadEntry() {
       const entry = this.getEntryById(this.id);
-      // return
+      if (!entry) this.$router.push({name: 'no-entry'});
+
+      this.entry = entry;
       console.log(entry);
     },
   },
