@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import { day, month, yearDay } from "../helpers/getDayMonthYear";
+import getDayMonthYear from "../helpers/getDayMonthYear";
 
 export default {
   props: {
     entry: {
-      type: Object,
+      type    : Object,
       required: true,
     },
   },
@@ -38,12 +38,15 @@ export default {
         : this.entry.text;
     },
     day() {
+      const { day } = getDayMonthYear(this.entry.date);
       return day;
     },
     month() {
+      const { month } = getDayMonthYear(this.entry.date);
       return month;
     },
     year() {
+      const { yearDay } = getDayMonthYear(this.entry.date);
       return yearDay;
     },
   },
@@ -53,11 +56,11 @@ export default {
 <style lang="scss" scoped>
 .entry-container {
   border-bottom: 1px solid #2c3e50;
-  transition: 0.2s all ease-in;
+  transition   : 0.2s all ease-in;
 
   &:hover {
     background-color: lighten($color: grey, $amount: 45);
-    transition: 0.2s all ease-in;
+    transition      : 0.2s all ease-in;
   }
 
   .entry-title {
